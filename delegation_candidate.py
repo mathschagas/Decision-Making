@@ -58,7 +58,10 @@ class DelegationCandidate:
         estimated_risk = 0
         for b in self.benefit_attributes:
             # TODO: Update to utility preference
-            estimated_benefit += b.value * b.weight
+            if (b.has_utility_preference()):
+                estimated_benefit += b.get_utility_preference() * b.weight
+            else:
+                estimated_benefit += b.value * b.weight
         for c in self.cost_attributes:
             estimated_cost += c.value * c.weight
         for r in self.risk_attributes:

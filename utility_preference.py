@@ -7,6 +7,13 @@ class UtilityPreference:
         self.values = values
         self.preferences = preferences
 
+
+    def is_set(self):
+        if len(self.values) == 0 or len(self.preferences) == 0:
+            return False
+        else:
+            return True
+
     # Função para calcular a preferência de utilidade para taxa de falha
     def calculate_utility(self, attribute):
         if attribute <= self.values[0]:
@@ -32,9 +39,9 @@ class UtilityPreference:
 # Calcular a preferência de utilidade para valores específicos
 # Exemplo: para taxa de falha igual a 1 e uso de recursos igual a 8
 
-failure_rates = [0, 1, 2, 3]  # Valores de taxa de falha
-failure_preference = [100, 30, 0, 0]  # Preferência de utilidade para taxa de falha
-failure_rate = 0.5
-fr = UtilityPreference("Failure Rate", failure_rates, failure_preference)
-print("Preferência de utilidade para taxa de falha de 1:", fr.calculate_utility(failure_rate))
-fr.plot_utility_preference()
+# failure_rates = [0, 1, 2, 3]  # Valores de taxa de falha
+# failure_preference = [100, 30, 0, 0]  # Preferência de utilidade para taxa de falha
+# failure_rate = 0.5
+# fr = UtilityPreference("Failure Rate", failure_rates, failure_preference)
+# print("Preferência de utilidade para taxa de falha de 1:", fr.calculate_utility(failure_rate))
+# fr.plot_utility_preference()
