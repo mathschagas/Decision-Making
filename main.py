@@ -9,7 +9,7 @@ times_preference = [100, 90, 70, 50, 0]
 time_up = UtilityPreference("Time", times, times_preference)
 
 ratings = [2.5, 3.5, 4.5, 5] 
-ratings_preference = [0, 20, 40, 100]
+ratings_preference = [0, 30, 70, 100]
 ratings_up = UtilityPreference("Rating", ratings, ratings_preference)
 
 #  OPTION 1: 
