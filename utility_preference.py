@@ -16,16 +16,19 @@ class UtilityPreference:
 
     # Função para calcular a preferência de utilidade para taxa de falha
     def calculate_utility(self, attribute):
-        if attribute <= self.values[0]:
-            return self.preferences[0]
-        elif attribute >= self.values[-1]:
-            return self.preferences[-1]
-        else:
-            for i in range(1, len(self.values)):
-                if attribute <= self.values[i]:
-                    x0, x1 = self.values[i - 1], self.values[i]
-                    y0, y1 = self.preferences[i - 1], self.preferences[i]
-                    return y0 + (y1 - y0) * (attribute - x0) / (x1 - x0)
+        if self.is_set():
+            if attribute <= self.values[0]:
+                return self.preferences[0]
+            elif attribute >= self.values[-1]:
+                return self.preferences[-1]
+            else:
+                for i in range(1, len(self.values)):
+                    if attribute <= self.values[i]:
+                        x0, x1 = self.values[i - 1], self.values[i]
+                        y0, y1 = self.preferences[i - 1], self.preferences[i]
+                        return round(y0 + (y1 - y0) * (attribute - x0) / (x1 - x0))
+        else: 
+            return 0
 
     def plot_utility_preference(self):
         # Plot para taxa de falha

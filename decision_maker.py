@@ -25,7 +25,7 @@ class DecisionMaker:
     def select_best_candidate(self) -> DelegationCandidate:
         best_candidate = self.delegation_candidates[0]
         if len(self.delegation_candidates) > 1:
-            for dc in self.delegation_candidates:
+            for dc in self.delegation_candidates[1:]:
                 if dc.score() > best_candidate.score():
                     best_candidate = dc
         return best_candidate

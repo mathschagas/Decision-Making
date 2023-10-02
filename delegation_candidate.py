@@ -25,7 +25,7 @@ class DelegationCandidate:
         self.cost_attributes.append(cost)
     
     def edit_cost(self, cost):
-        c_index = self.benefit_attributes.index(cost)
+        c_index = self.cost_attributes.index(cost)
         self.cost_attributes[c_index] = cost
 
     def remove_cost(self, cost):
