@@ -8,13 +8,13 @@ times = [0, 30, 60, 90, 120]
 times_preference = [100, 90, 70, 50, 0]
 time_up = UtilityPreference("Time", times, times_preference)
 
-ratings = [5, 4, 3, 2.5] 
-ratings_preference = [100, 80, 40, 0]
+ratings = [2.5, 3.5, 4.5, 5] 
+ratings_preference = [0, 30, 70, 100]
 ratings_up = UtilityPreference("Rating", ratings, ratings_preference)
 
 #  OPTION 1: 
-benefit_1 = Attribute("Time", 45)
-benefit_2 = Attribute("Rating", 4.5)
+benefit_1 = Attribute("Time", 60)
+benefit_2 = Attribute("Rating", 4.9)
 benefit_1.set_utility_preference(time_up)
 benefit_2.set_utility_preference(ratings_up)
 cost_1 = Attribute("Price", 15)
@@ -29,8 +29,8 @@ option_1.add_cost(cost_2)
 option_1.add_risk(risk_1)
 
 #  OPTION 2: 
-benefit_3 = Attribute("Time", 60)
-benefit_4 = Attribute("Rating", 4)
+benefit_3 = Attribute("Time", 45)
+benefit_4 = Attribute("Rating", 3.5)
 benefit_3.set_utility_preference(time_up)
 benefit_4.set_utility_preference(ratings_up)
 cost_3 = Attribute("Price", 12)
@@ -45,8 +45,8 @@ option_2.add_cost(cost_4)
 option_2.add_risk(risk_2)
 
 #  OPTION 3: 
-benefit_5 = Attribute("Time", 90)
-benefit_6 = Attribute("Rating", 4.2)
+benefit_5 = Attribute("Time", 120)
+benefit_6 = Attribute("Rating", 3)
 benefit_5.set_utility_preference(time_up)
 benefit_6.set_utility_preference(ratings_up)
 cost_5 = Attribute("Price", 8)
@@ -65,7 +65,12 @@ dm.add_candidate(option_1)
 dm.add_candidate(option_2)
 dm.add_candidate(option_3)
 
+time_up.plot_utility_preference()
+ratings_up.plot_utility_preference()
+
 dm.print_options()
-print("______________________________________________________________\n")
+print("_" * 40 + "\n")
 print("----- BEST OPTION -----")
-dm.select_best_candidate().print_info()
+bc = dm.select_best_candidate()
+bc.print_info()
+print(f"    - SCORE: {bc.score()}")

@@ -9,9 +9,11 @@ class Attribute:
         self.utility_preference = UtilityPreference(name=name)
     
     def __str__(self) -> str:
+        if self.has_utility_preference():
+            return f"Attribute: {self.name}, Value: {self.value}, Weight: {self.weight}, Utility Score: {self.get_utility_preference()}"
         return f"Attribute: {self.name}, Value: {self.value}, Weight: {self.weight}"
 
-    def get_utility_preference(self):
+    def get_utility_preference(self) -> UtilityPreference:
         return self.utility_preference.calculate_utility(self.value)
 
     def set_utility_preference(self, utility_preference):
